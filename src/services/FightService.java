@@ -16,22 +16,24 @@ public class FightService {
         while (hero.isAlive() && aliveMonsters.size() != 0) {
             for (Creature monster : aliveMonsters) {
                 if (hero instanceof Healer && hero.canHeal()) {
-                    Scanner in = new Scanner(System.in);
-                    System.out.printf("Health Points %d/%d. You can use heal? Y/n", hero.getHealthPoints(), hero.getMaxHealthPoints());
-                    String yesOrNo = in.nextLine();
-                    if (yesOrNo.equals("Y")) {
-                        hero.heal();
-                    }
-//                    double percent = (double) hero.getHealthPoints() / hero.getMaxHealthPoints();
-//                    if(percent < .6){
+//                    Scanner in = new Scanner(System.in);
+//                    System.out.printf("Health Points %d/%d. You can use heal? Y/n", hero.getHealthPoints(), hero.getMaxHealthPoints());
+//                    String yesOrNo = in.nextLine();
+//                    if (yesOrNo.equals("Y")) {
 //                        hero.heal();
 //                    }
+                    double percent = (double) hero.getHealthPoints() / hero.getMaxHealthPoints();
+                    if (percent < .6) {
+                        hero.heal();
+                    }
 
                 } else if (!hero.isAlive()) {
                     break;
                 }
                 attack(monster, hero);
-                attack(hero, monster);
+                if (hero.isAlive()) {
+                    attack(hero, monster);
+                }
 
                 aliveMonsters = aliveMonsters.stream().filter(Creature::isAlive).collect(Collectors.toList());
             }

@@ -13,7 +13,7 @@ public class Hero extends Creature implements Healer {
     @Override
     public void heal() {
         int healPercent = 30;
-        if(!canHeal()){
+        if (!canHeal()) {
             return;
         }
 
