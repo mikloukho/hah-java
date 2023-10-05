@@ -1,9 +1,5 @@
 package creatures;
 
-import helpers.Randomizer;
-
-import java.time.temporal.ValueRange;
-
 abstract public class Creature {
     private final int attack;
     private final int protect;
@@ -13,7 +9,7 @@ abstract public class Creature {
     private final int maxHealthPoints;
 
 
-    protected Creature(int protect, int attack,  int minDamage, int maxDamage, int maxHealthPoints) {
+    protected Creature(int protect, int attack, int minDamage, int maxDamage, int maxHealthPoints) {
         this.attack = attack;
         this.protect = protect;
         this.minDamage = minDamage;
